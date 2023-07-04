@@ -1,0 +1,391 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="ico/grid-3x3-gap.svg">
+
+    <!-- CSS and JS (external) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/css-toggle-switch/latest/toggle-switch.css"/>
+
+    
+    <!-- CSS and JS (internal) -->
+    <link rel="stylesheet" href="xr2c2_icons.css"/>
+    <link rel="stylesheet" href="cc-icons.css"/>
+    <link rel="stylesheet" href="xr2c2_vitrine.css"/>
+    <script type="text/javascript" src="xr2c2.js"></script>
+
+    <title>XR2C2 Vitrine</title>
+
+</head>
+<body>
+<main>
+    <header class="p-3 bg-light border-1 border-bottom">
+        <h2><i class="bi-grid-3x3-gap"></i> XR2C2 Vitrine </h2>
+    </header>
+
+    <div class="container-fluid bg-light">
+        <div class="row">
+            <aside id="sidebar" class="col-sm-2 border-end" style="min-width: 17em;">
+                <div class="d-flex flex-row align-items-center p-2 border-bottom">
+                    <div class="flex-grow-1">Number of techniques:</div>
+                    <div id="tec-count" class="flex-grow-0 text-secondary">0</div>
+                </div>
+                <div class="d-flex flex-row align-items-center p-2 border-bottom position-relative">
+                    <div class="flex-grow-0 pe-2">Search:</div>
+                    <input id="search" type="search" class="flex-grow-1 form-control form-control-sm"
+                           aria-label="Search">
+                    <!-- <span id="clear-search" class="position-absolute" data-bs-toggle="tooltip" title="Clear search"><i class="bi-x-circle"></i></span> -->
+                </div>
+                <div class="p-2 border-bottom">
+                    <div class="d-flex">
+                        <h5 class="me-2">Filters</h5>
+                        <span id="toggle-help" data-bs-toggle="tooltip" title="Help"><i class="bi-question-circle"></i></span>
+                        <span class="flex-grow-1"></span>
+                        <span id="reset-filters" data-bs-toggle="tooltip" title="Reset filters"><i class="bi-arrow-counterclockwise"></i></span>
+                    </div>
+                    <div id="help" class="p-2 collapse">
+                        <h6>Help</h6>
+                        <div class="p-1">
+                            <i class="bi-eye-fill"></i> <strong>Want:</strong> Show me!
+                        </div>
+                        <div class="p-1">
+                            <i class="bi-eye"></i> <strong>Indifferent:</strong> I don't care.
+                        </div>
+                        <div class="p-1">
+                            <i class="bi-eye-slash-fill"></i> <strong>Hide:</strong> I'm not interested!
+                        </div>
+                    </div>
+                    
+
+
+
+<div class="accordion" id="filter-accordion">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="header-time">
+            <button class="accordion-button p-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel-time" aria-expanded="true" aria-controls="panel-time">
+                <i class="bi-clock ms-1 me-2"></i>Time
+            </button>
+        </h2>
+
+        <div id="panel-time" class="accordion-collapse collapse p-2"  aria-labelledby="header-time">
+            <div class="p-2">
+                <div class="">Primitives</div>
+
+                <div class="d-flex flex-row align-items-center mb-1">
+                    <i class="bi-headset-vr mx-2 my-1"></i>
+                    <div class="flex-grow-1 fw-light">VR</div>
+                    <div class="cat-switch switch-toggle rounded">
+                        <input type="radio" name="points-radio" id="points-want">
+                        <label class="" for="points-want"><i class="bi-eye-fill"></i></label>
+
+                        <input type="radio" name="points-radio" id="points-indifferent" checked>
+                        <label class="border-1 border-start border-end" for="points-indifferent"><i class="bi-eye"></i></label>
+
+                        <input type="radio" name="points-radio" id="points-hide">
+                        <label class="" for="points-hide"><i class="bi-eye-slash-fill"></i></label>
+
+                        <a class="rounded"></a>
+                    </div>
+
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-1">
+                    <i class="bi-phone mx-2 my-1"></i>
+                    <div class="flex-grow-1 fw-light">AR</div>
+                    <div class="cat-switch switch-toggle rounded">
+                        <input type="radio" name="intervals-radio" id="intervals-want">
+                        <label class="" for="intervals-want"><i class="bi-eye-fill"></i></label>
+
+                        <input type="radio" name="intervals-radio" id="intervals-indifferent" checked>
+                        <label class="border-1 border-start border-end" for="intervals-indifferent"><i class="bi-eye"></i></label>
+
+                        <input type="radio" name="intervals-radio" id="intervals-hide">
+                        <label class="" for="intervals-hide"><i class="bi-eye-slash-fill"></i></label>
+
+                        <a class="rounded"></a>
+                    </div>
+
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-1">
+                    <i class="bi-person mx-2 my-1"></i>
+                    <div class="flex-grow-1 fw-light">XR</div>
+                    <div class="cat-switch switch-toggle rounded">
+                        <input type="radio" name="intervals-radio" id="intervals-want">
+                        <label class="" for="intervals-want"><i class="bi-eye-fill"></i></label>
+
+                        <input type="radio" name="intervals-radio" id="intervals-indifferent" checked>
+                        <label class="border-1 border-start border-end" for="intervals-indifferent"><i class="bi-eye"></i></label>
+
+                        <input type="radio" name="intervals-radio" id="intervals-hide">
+                        <label class="" for="intervals-hide"><i class="bi-eye-slash-fill"></i></label>
+
+                        <a class="rounded"></a>
+                    </div>
+
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-1">
+                    <i class="bi-list-ul mx-2 my-1"></i>
+                    <div class="flex-grow-1 fw-light">Other</div>
+                    <div class="cat-switch switch-toggle rounded">
+                        <input type="radio" name="intervals-radio" id="intervals-want">
+                        <label class="" for="intervals-want"><i class="bi-eye-fill"></i></label>
+
+                        <input type="radio" name="intervals-radio" id="intervals-indifferent" checked>
+                        <label class="border-1 border-start border-end" for="intervals-indifferent"><i class="bi-eye"></i></label>
+
+                        <input type="radio" name="intervals-radio" id="intervals-hide">
+                        <label class="" for="intervals-hide"><i class="bi-eye-slash-fill"></i></label>
+
+                        <a class="rounded"></a>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="header-data">
+            <button class="accordion-button p-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel-data" aria-expanded="true" aria-controls="panel-data">
+                <i class="bi-database ms-1 me-2"></i>Data
+            </button>
+        </h2>
+
+        <div id="panel-data" class="accordion-collapse collapse p-2"  aria-labelledby="header-data">
+            <div class="p-2">
+                <div class="">Number of variables</div>
+                <div class="d-flex flex-row align-items-center mb-1">
+                    <i class="ico-timeviz-graph-up mx-2 my-1"></i>
+                    <div class="flex-grow-1 fw-light">Single</div>
+                    <div class="cat-switch switch-toggle rounded">
+                        <input type="radio" name="single-radio" id="single-want">
+                        <label class="" for="single-want"><i class="bi-eye-fill"></i></label>
+
+                        <input type="radio" name="single-radio" id="single-indifferent" checked>
+                        <label class="border-1 border-start border-end" for="single-indifferent"><i class="bi-eye"></i></label>
+
+                        <input type="radio" name="single-radio" id="single-hide">
+                        <label class="" for="single-hide"><i class="bi-eye-slash-fill"></i></label>
+
+                        <a class="rounded"></a>
+                    </div>
+
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-1">
+                    <i class="ico-timeviz-graph-up-multi mx-2 my-1"></i>
+                    <div class="flex-grow-1 fw-light">Multiple</div>
+                    <div class="cat-switch switch-toggle rounded">
+                        <input type="radio" name="multiple-radio" id="multiple-want">
+                        <label class="" for="multiple-want"><i class="bi-eye-fill"></i></label>
+
+                        <input type="radio" name="multiple-radio" id="multiple-indifferent" checked>
+                        <label class="border-1 border-start border-end" for="multiple-indifferent"><i class="bi-eye"></i></label>
+
+                        <input type="radio" name="multiple-radio" id="multiple-hide">
+                        <label class="" for="multiple-hide"><i class="bi-eye-slash-fill"></i></label>
+
+                        <a class="rounded"></a>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="p-2">
+                <div class="">Frame of reference</div>
+                <div class="d-flex flex-row align-items-center mb-1">
+                    <i class="ico-timeviz-table mx-2 my-1"></i>
+                    <div class="flex-grow-1 fw-light">Abstract</div>
+                    <div class="cat-switch switch-toggle rounded">
+                        <input type="radio" name="abstract-radio" id="abstract-want">
+                        <label class="" for="abstract-want"><i class="bi-eye-fill"></i></label>
+
+                        <input type="radio" name="abstract-radio" id="abstract-indifferent" checked>
+                        <label class="border-1 border-start border-end" for="abstract-indifferent"><i class="bi-eye"></i></label>
+
+                        <input type="radio" name="abstract-radio" id="abstract-hide">
+                        <label class="" for="abstract-hide"><i class="bi-eye-slash-fill"></i></label>
+
+                        <a class="rounded"></a>
+                    </div>
+
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-1">
+                    <i class="ico-timeviz-globe mx-2 my-1"></i>
+                    <div class="flex-grow-1 fw-light">Spatial</div>
+                    <div class="cat-switch switch-toggle rounded">
+                        <input type="radio" name="spatial-radio" id="spatial-want">
+                        <label class="" for="spatial-want"><i class="bi-eye-fill"></i></label>
+
+                        <input type="radio" name="spatial-radio" id="spatial-indifferent" checked>
+                        <label class="border-1 border-start border-end" for="spatial-indifferent"><i class="bi-eye"></i></label>
+
+                        <input type="radio" name="spatial-radio" id="spatial-hide">
+                        <label class="" for="spatial-hide"><i class="bi-eye-slash-fill"></i></label>
+
+                        <a class="rounded"></a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="header-visrep">
+            <button class="accordion-button p-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel-visrep" aria-expanded="true" aria-controls="panel-visrep">
+                <i class="bi-bar-chart ms-1 me-2"></i>Visual representation
+            </button>
+        </h2>
+
+        <div id="panel-visrep" class="accordion-collapse collapse p-2"  aria-labelledby="header-visrep">
+            <div class="p-2">
+                <div class="">Mapping of time</div>
+                <div class="d-flex flex-row align-items-center mb-1">
+                    <i class="ico-timeviz-camera mx-2 my-1"></i>
+                    <div class="flex-grow-1 fw-light">Static</div>
+                    <div class="cat-switch switch-toggle rounded">
+                        <input type="radio" name="static-radio" id="static-want">
+                        <label class="" for="static-want"><i class="bi-eye-fill"></i></label>
+
+                        <input type="radio" name="static-radio" id="static-indifferent" checked>
+                        <label class="border-1 border-start border-end" for="static-indifferent"><i class="bi-eye"></i></label>
+
+                        <input type="radio" name="static-radio" id="static-hide">
+                        <label class="" for="static-hide"><i class="bi-eye-slash-fill"></i></label>
+
+                        <a class="rounded"></a>
+                    </div>
+
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-1">
+                    <i class="ico-timeviz-camera-video mx-2 my-1"></i>
+                    <div class="flex-grow-1 fw-light">Dynamic</div>
+                    <div class="cat-switch switch-toggle rounded">
+                        <input type="radio" name="dynamic-radio" id="dynamic-want">
+                        <label class="" for="dynamic-want"><i class="bi-eye-fill"></i></label>
+
+                        <input type="radio" name="dynamic-radio" id="dynamic-indifferent" checked>
+                        <label class="border-1 border-start border-end" for="dynamic-indifferent"><i class="bi-eye"></i></label>
+
+                        <input type="radio" name="dynamic-radio" id="dynamic-hide">
+                        <label class="" for="dynamic-hide"><i class="bi-eye-slash-fill"></i></label>
+
+                        <a class="rounded"></a>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="p-2">
+                <div class="">Dimensionality</div>
+                <div class="d-flex flex-row align-items-center mb-1">
+                    <i class="ico-timeviz-square mx-2 my-1"></i>
+                    <div class="flex-grow-1 fw-light">2D</div>
+                    <div class="cat-switch switch-toggle rounded">
+                        <input type="radio" name="2d-radio" id="2d-want">
+                        <label class="" for="2d-want"><i class="bi-eye-fill"></i></label>
+
+                        <input type="radio" name="2d-radio" id="2d-indifferent" checked>
+                        <label class="border-1 border-start border-end" for="2d-indifferent"><i class="bi-eye"></i></label>
+
+                        <input type="radio" name="2d-radio" id="2d-hide">
+                        <label class="" for="2d-hide"><i class="bi-eye-slash-fill"></i></label>
+
+                        <a class="rounded"></a>
+                    </div>
+
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-1">
+                    <i class="ico-timeviz-box mx-2 my-1"></i>
+                    <div class="flex-grow-1 fw-light">3D</div>
+                    <div class="cat-switch switch-toggle rounded">
+                        <input type="radio" name="3d-radio" id="3d-want">
+                        <label class="" for="3d-want"><i class="bi-eye-fill"></i></label>
+
+                        <input type="radio" name="3d-radio" id="3d-indifferent" checked>
+                        <label class="border-1 border-start border-end" for="3d-indifferent"><i class="bi-eye"></i></label>
+
+                        <input type="radio" name="3d-radio" id="3d-hide">
+                        <label class="" for="3d-hide"><i class="bi-eye-slash-fill"></i></label>
+
+                        <a class="rounded"></a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>                </div>
+
+            </aside>
+            <main id="tec-container" class="col container-fluid p-2 position-relative overflow-hidden">
+            </main>
+        </div>
+    </div>
+
+
+
+    <div id="tec-detail" class="modal">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <!-- To be dynamically filled with details about a selected technique -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="detail-title" class="modal-title"></h5>
+                    <div id="detail-badges" class="ms-2"></div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <figure class="figure p-2 ms-2 mb-2 border rounded float-end w-50">
+                        <img id="detail-image" class="figure-img img-fluid" src="" alt="">
+                        <figcaption class="figure-caption">
+                            <div id="detail-caption"></div>
+                            <div id="detail-source" class="fst-italic"></div>
+                        </figcaption>
+                    </figure>
+                    <p id="detail-text"></p>
+                    <h6>References</h6>
+                    <ul id="detail-references">
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="tooltip"
+                            title="Close view"><i class="bi-x-lg"></i></button>
+                    <button id="detail-btn-url" type="button" class="btn btn-secondary" data-bs-toggle="tooltip"
+                            title="Copy URL to clipboard"><i class="bi-clipboard"></i></button>
+                    <button id="detail-btn-prev" type="button" class="btn btn-primary" data-bs-toggle="tooltip"
+                            title="Previous technique"><i class="bi-caret-left-fill"></i></button>
+                    <button id="detail-btn-next" type="button" class="btn btn-primary" data-bs-toggle="tooltip"
+                            title="Next technique"><i class="bi-caret-right-fill"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
