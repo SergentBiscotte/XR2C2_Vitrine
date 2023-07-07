@@ -8,7 +8,8 @@ let showdetail; // Global helper functions
 let showcat;
 let showtag;
 
-class TimeViz2 {
+class TimeViz2 
+{
     constructor() {
 
         this.tec_container = document.getElementById("tec-container");
@@ -376,4 +377,17 @@ class TimeViz2 {
             window.history.pushState({}, "", "?" + qs); // Add new state
         }
     }
+}
+
+function toggleText(id) {
+  var contenu = document.getElementById("contenu" + id);
+  if (contenu.style.display === "none") {
+    contenu.style.display = "block";
+     bandeau.style.height = "200px"; // ajuster la hauteur du bandeau déroulé
+    document.body.style.paddingTop = "200px";
+  } else {
+    contenu.style.display = "none";
+     bandeau.style.height = "100px"; // ajuster la hauteur du bandeau replié
+    document.body.style.paddingTop = "100px";
+  }
 }
