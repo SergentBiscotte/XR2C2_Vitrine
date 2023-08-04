@@ -1,0 +1,64 @@
+@font-face {
+    font-family: "timeviz-icons";
+    src: url("./timeviz-icons.woff2?5f35f8e713971b733a49fd263f7abfd8") format("woff2");
+}
+
+i[class^="ico-timeviz-"]:before, i[class*=" ico-timeviz-"]:before {
+    font-family: timeviz-icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.ico-timeviz-arrow-clockwise:before {
+    content: "\f101";
+}
+.ico-timeviz-arrow-right:before {
+    content: "\f102";
+}
+.ico-timeviz-box:before {
+    content: "\f103";
+}
+.ico-timeviz-calendar-range:before {
+    content: "\f104";
+}
+.ico-timeviz-calendar-week:before {
+    content: "\f105";
+}
+.ico-timeviz-camera-video:before {
+    content: "\f106";
+}
+.ico-timeviz-camera:before {
+    content: "\f107";
+}
+.ico-timeviz-clock:before {
+    content: "\f108";
+}
+.ico-timeviz-database:before {
+    content: "\f109";
+}
+.ico-timeviz-globe:before {
+    content: "\f10a";
+}
+.ico-timeviz-graph-up-multi:before {
+    content: "\f10b";
+}
+.ico-timeviz-graph-up:before {
+    content: "\f10c";
+}
+.ico-timeviz-grid-3x3-gap:before {
+    content: "\f10d";
+}
+.ico-timeviz-image:before {
+    content: "\f10e";
+}
+.ico-timeviz-square:before {
+    content: "\f10f";
+}
+.ico-timeviz-table:before {
+    content: "\f110";
+}

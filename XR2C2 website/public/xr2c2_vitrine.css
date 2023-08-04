@@ -1,0 +1,95 @@
+
+
+footer {
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Override bootstrap modal defaults */
+
+.modal-backdrop.show {
+    opacity: 0.1;
+}
+
+.modal-content {
+    box-shadow: 0 0 1em;
+}
+
+/* Override toggle switch defaults */
+
+.switch-toggle {
+    background-color: var(--bs-gray-200);
+    height: 1.5em;
+}
+
+.switch-toggle a {
+    background-color: var(--bs-gray-500);
+}
+
+.switch-toggle label {
+    line-height: unset;
+}
+
+.switch-toggle input:focus ~ span a, .switch-toggle input:focus + label {
+    outline: none;
+}
+
+.switch-toggle input + label {
+    cursor: pointer;
+}
+
+/* Styles for custom elements */
+
+#clear-search {
+    cursor: pointer;
+    right: 1em;
+}
+
+#toggle-help {
+    cursor: pointer;
+}
+
+#reset-filters {
+    cursor: pointer;
+}
+
+.tec-item {
+    width: 150px;
+    position: absolute;
+    transition: left 500ms, top 500ms, transform 500ms;
+}
+
+.tec-item:hover {
+    transform: rotate(3deg);
+}
+
+.navbar {
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+
+.navbar-nav .nav-item {
+  margin-right: 100px;
+  left:40px;
+}
+
+.navbar-nav .nav-link {
+  color: #333;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ff0000;
+}
+
+
+
+
+
