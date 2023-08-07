@@ -19,7 +19,7 @@
     
     <!-- CSS and JS (internal) -->
     <link rel="stylesheet" href="xr2c2_icons.css"/>
-    <link rel="stylesheet" href="cc-icons.css"/>
+
     <link rel="stylesheet" href="xr2c2_vitrine.css"/>
     
     <script type="text/javascript" src="xr2c2.js"></script>
@@ -355,7 +355,7 @@
 
 
 
-                    
+
     // Load the JSON data using d3.json
     d3.json("yourResult.json").then(function (jsonData) {
         // Define the width and height of the SVG container
@@ -389,7 +389,13 @@
             .attr("class", "circle")
             .attr("transform", function (d, i) {
                 return "translate(" + xScale(i) + "," + yScale(0) + ")";
+            })
+            .on("click", function(event, d) {
+                // Redirect to another page with the value of the clicked circle's data
+                var value = d["Name"];
+                window.open("/xr2c2-vitrine/project?value=" + encodeURIComponent(value));
             });
+
 
         // Add a background circle to each circle to create a rounded circle effect
         circles.append("circle")
