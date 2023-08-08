@@ -42,37 +42,117 @@
 
 <div class="e17_34">
     <div class="e17_39"></div>
-    <span class="e17_40">Name of the project</span>
+    <span class="e17_40" id="projectName">Name of the project</span>
     
-    <button type="button" class="btn btn-link collapsible" data-bs-toggle="collapse" data-bs-target="#summary" aria-expanded="false" aria-controls="summary">
-        Project summary
-    </button>
-    <div class="collapse" id="summary">
-        <div class="contenu">
-            <p>This is a test to show what the project is about.This is a test to show what the project is about.This is a test to show what the project is about.This is a test to show what the project is about.This is a test to show what the project is about.</p>
+
+ 
+    <h3>Summary</h3>   
+    <div class="contenu" id="summary">
+        <div id="project-summary">
         </div>
     </div>
 
     <button type="button" class="btn btn-link collapsible" data-bs-toggle="collapse" data-bs-target="#requirements" aria-expanded="false" aria-controls="requirements">
-        Project Requirements
+        Requirements
     </button>
     <div class="collapse" id="requirements">
         <div class="contenu" id="project-details">
         </div>
     </div>
 
-    <button type="button" class="btn btn-link collapsible" data-bs-toggle="collapse" data-bs-target="#projectLink" aria-expanded="false" aria-controls="projectLink">
-        Project Link
+    <button type="button" class="btn btn-link collapsible" data-bs-toggle="collapse" data-bs-target="#privacy-concerns" aria-expanded="false" aria-controls="privacy-concerns">
+        Privacy concerns
     </button>
-    <div class="collapse" id="projectLink">
-        <div class="contenu">
-            <p>This is a test to show what the project is about.This is a test to show what the project is about.This is a test to show what the project is about.This is a test to show what the project is about.This is a test to show what the project is about.</p>
+    <div class="collapse" id="privacy-concerns">
+        <div class="contenu" id="project-privacy">
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-link collapsible" data-bs-toggle="collapse" data-bs-target="#documentation" aria-expanded="false" aria-controls="documentation">
+        Documentation
+    </button>
+    <div class="collapse" id="documentation">
+        <div class="contenu" id="project-documentation">
+        </div>
+    </div>
+
+        <button type="button" class="btn btn-link collapsible" data-bs-toggle="collapse" data-bs-target="#evaluation" aria-expanded="false" aria-controls="evaluation">
+        Evaluation
+    </button>
+    <div class="collapse" id="evaluation">
+        <div class="contenu" id="project-evaluation">
         </div>
     </div>
 
 </div>
         </main>
 
+
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const value = urlParams.get('value');
+
+            d3.json("yourResult.json").then(function (jsonData) {
+                const decodedValue = decodeURIComponent(value);
+                const project = jsonData.find(item => item.Name === decodedValue);
+
+                if (project) {
+                    const projectNameElement = document.getElementById('projectName');
+                    if (projectNameElement) {
+                        projectNameElement.textContent = project.Name; // Update project name
+                    }
+
+                    const projectDetailsElement = document.getElementById('project-details');
+                    if (projectDetailsElement) {
+                        // Rest of your existing code to generate project details
+                    }
+                }
+            });
+        });
+    </script>
+
+
+<!-- Script for the Summary -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const value = urlParams.get('value');
+
+            d3.json("yourResult.json").then(function (jsonData) {
+                const decodedValue = decodeURIComponent(value);
+                const project = jsonData.find(item => item.Name === decodedValue);
+
+            if (project) {
+                const includeProperties = ["Person responsible / Contact", "Funding", "Goal", "Immersion Type", "Immersivity degree", "Unique or redoable", "Experience type", "Progress state"];
+
+                const projectSummaryElement = document.getElementById('project-summary');
+                if (projectSummaryElement) {
+                    // Clear the existing content
+                    projectSummaryElement.innerHTML = "";
+
+                    // Create an unordered list
+                    const ul = document.createElement('ul');
+                    ul.classList.add("project-summary-list");
+
+                    // Loop through the properties of the project object
+                    for (const property in project) {
+                        if (project.hasOwnProperty(property) && includeProperties.includes(property)) {
+                            const li = document.createElement('li');
+                            li.innerHTML = `<strong>${property}:</strong> ${project[property]}`;
+                            ul.appendChild(li);
+                        }
+                    }
+
+                    // Append the ul to the projectDetailsElement
+                    projectSummaryElement.appendChild(ul);
+                }
+            }
+        });
+    });
+    </script>
+
+<!-- Script for the Requirements -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const urlParams = new URLSearchParams(window.location.search);
@@ -85,6 +165,8 @@
             const project = jsonData.find(item => item.Name === decodedValue);
 
             if (project) {
+                const excludedProperties = ["Date", "Person interviewed", "Format", "Duration", "Name", "Person responsible / Contact", "Funding", "Goal", "Immersion Type", "Immersivity degree", "Unique or redoable", "Experience type", "Progress state", "Capture and use of personal data", "Participant exposition to others", "Confidentiality", "Distribution License", "Any other privacy informations", "Accessing existing documentation", "Past installations (photos, videos, capture of work running)", "Script/Narrative", "Design documentation", "System diagram or schematics", "Publication scientifique lié à l'expérience (lien vers l'article etc...)", "Any other documentation informations", "Questionnnaires", "Protocole", "Mesures quantitatives (collecte de données, quel type etc...)", "Echantillon", "Devices (ordinateur, equipement physiologiques)"];
+
                 const projectDetailsElement = document.getElementById('project-details');
                 if (projectDetailsElement) {
                     // Clear the existing content
@@ -96,7 +178,7 @@
 
                     // Loop through the properties of the project object
                     for (const property in project) {
-                        if (project.hasOwnProperty(property)) {
+                        if (project.hasOwnProperty(property) && !excludedProperties.includes(property)) {
                             const li = document.createElement('li');
                             li.innerHTML = `<strong>${property}:</strong> ${project[property]}`;
                             ul.appendChild(li);
@@ -110,6 +192,127 @@
         });
     });
 </script>
+
+
+<!-- Script for the Privacy Concerns -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const value = urlParams.get('value');
+
+            d3.json("yourResult.json").then(function (jsonData) {
+                const decodedValue = decodeURIComponent(value);
+                const project = jsonData.find(item => item.Name === decodedValue);
+
+            if (project) {
+                //JSON rows name to retrieve
+                const includeProperties = ["Capture and use of personal data", "Participant exposition to others", "Confidentiality", "Distribution License", "Any other privacy informations"];
+
+                const projectPrivacyElement = document.getElementById('project-privacy');
+                if (projectPrivacyElement) {
+                    // Clear the existing content
+                    projectPrivacyElement.innerHTML = "";
+
+                    // Create an unordered list
+                    const ul = document.createElement('ul');
+                    ul.classList.add("project-privacy-list");
+
+                    // Loop through the properties of the project object
+                    for (const property in project) {
+                        if (project.hasOwnProperty(property) && includeProperties.includes(property)) {
+                            const li = document.createElement('li');
+                            li.innerHTML = `<strong>${property}:</strong> ${project[property]}`;
+                            ul.appendChild(li);
+                        }
+                    }
+
+                    // Append the ul to the projectDetailsElement
+                    projectPrivacyElement.appendChild(ul);
+                }
+            }
+        });
+    });
+    </script>
+
+    <!-- Script for the Documentation -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const value = urlParams.get('value');
+
+            d3.json("yourResult.json").then(function (jsonData) {
+                const decodedValue = decodeURIComponent(value);
+                const project = jsonData.find(item => item.Name === decodedValue);
+
+            if (project) {
+
+                const includeProperties = ["Accessing existing documentation", "Past installations (photos, videos, capture of work running)", "Script/Narrative", "Design documentation", "System diagram or schematics", "Publication scientifique lié à l'expérience (lien vers l'article etc...)", "Any other documentation informations"];
+
+                const projectDocumentationElement = document.getElementById('project-documentation');
+                if (projectDocumentationElement) {
+                    // Clear the existing content
+                    projectDocumentationElement.innerHTML = "";
+
+                    // Create an unordered list
+                    const ul = document.createElement('ul');
+                    ul.classList.add("project-documentation-list");
+
+                    // Loop through the properties of the project object
+                    for (const property in project) {
+                        if (project.hasOwnProperty(property) && includeProperties.includes(property)) {
+                            const li = document.createElement('li');
+                            li.innerHTML = `<strong>${property}:</strong> ${project[property]}`;
+                            ul.appendChild(li);
+                        }
+                    }
+
+                    // Append the ul to the projectDetailsElement
+                    projectDocumentationElement.appendChild(ul);
+                }
+            }
+        });
+    });
+    </script>
+
+    <!-- Script for the Evaluation -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const value = urlParams.get('value');
+
+            d3.json("yourResult.json").then(function (jsonData) {
+                const decodedValue = decodeURIComponent(value);
+                const project = jsonData.find(item => item.Name === decodedValue);
+
+            if (project) {
+
+                const includeProperties = ["Questionnnaires", "Protocole", "Mesures quantitatives (collecte de données, quel type etc...)", "Echantillon", "Devices (ordinateur, equipement physiologiques)"];
+
+                const projectEvaluationElement = document.getElementById('project-evaluation');
+                if (projectEvaluationElement) {
+                    // Clear the existing content
+                    projectEvaluationElement.innerHTML = "";
+
+                    // Create an unordered list
+                    const ul = document.createElement('ul');
+                    ul.classList.add("project-evaluation-list");
+
+                    // Loop through the properties of the project object
+                    for (const property in project) {
+                        if (project.hasOwnProperty(property) && includeProperties.includes(property)) {
+                            const li = document.createElement('li');
+                            li.innerHTML = `<strong>${property}:</strong> ${project[property]}`;
+                            ul.appendChild(li);
+                        }
+                    }
+
+                    // Append the ul to the projectDetailsElement
+                    projectEvaluationElement.appendChild(ul);
+                }
+            }
+        });
+    });
+    </script>
 
         <script type="text/javascript">                     
             let locals = <%- JSON.stringify(locals) %>;
