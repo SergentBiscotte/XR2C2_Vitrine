@@ -63,14 +63,13 @@
 }
 .e17_40 { 
 	color:rgba(0, 0, 0, 1);
-	width:393px;
 	height:44px;
 	position:absolute;
 	left:435px;
 	top:80px;
 	font-family:League Spartan;
 	text-align:left;
-	font-size:36px;
+	font-size:28px;
 	letter-spacing:0;
 }
 .e17_47 { 
@@ -348,4 +347,15 @@ body {
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   background-color: #f1f1f1;
+}
+
+.project-details-list {
+    list-style: none;
+    padding-left: 0;
+}
+.project-details-list li {
+    margin-bottom: 10px;
+}
+.project-details-list strong {
+    font-weight: bold;
 }
